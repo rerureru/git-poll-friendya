@@ -1,0 +1,99 @@
+DROP TABLE IF EXISTS USERINF ;
+create table USERINF(
+     USERID		varchar(20) not null primary key,
+	 USERNAME	varchar(60) not null,
+     USERPW 	varchar(20) not null,
+     NICKNAME   varchar(20) not null,
+	 EMAIL      varchar(60) ,
+     PHNNUMBER  varchar(20) ,
+	 ADDRESS    varchar(60) ,
+	 CREATEDATE datetime 	not null,
+	 UPDATEDATE datetime
+);
+
+DROP TABLE BOARD ;
+create table BOARD(
+     BOARDID	int			not null primary key,
+     CATETORYID varchar(5)	not null,
+	 SUBJECT	varchar(60) not null,
+     CONTENT    varchar(2000) not null,
+	 HITCNT     int,
+     RECOMMENDCNT int,
+	 CREATOR    varchar(20) not null,
+	 CREATEDATE datetime 	not null,
+	 UPDATEDATE datetime
+);
+
+DROP TABLE COMMENT_MAIN ;
+create table COMMENT_MAIN(
+     COMMENTID	int			not null primary key,
+     BOARDID    int 		not null,
+     CONTENT    varchar(2000) not null,
+	 CREATOR    varchar(20) not null,
+	 CREATEDATE datetime 	not null,
+	 UPDATEDATE datetime
+);
+
+DROP TABLE COMMENT_SUB ;
+create table COMMENT_SUB(
+     SUBCOMMENTID int		not null primary key,
+	 COMMENTID	int	 		not null,
+     CONTENT    varchar(2000) not null,
+	 CREATOR    varchar(20) not null,
+	 CREATEDATE datetime 	not null,
+	 UPDATEDATE datetime
+);
+
+DROP TABLE POLL ;
+create table POLL(
+     POLLID     int			not null primary key,
+     BOARDID    int	 		not null,
+     QUESTION   varchar(1000) not null,
+	 OPT1    varchar(200) not null,
+	 OPT2    varchar(200) not null,
+	 OPT3    varchar(200) not null,
+	 OPT4    varchar(200) not null,
+	 OPT5    varchar(200) not null,
+	 CREATEDATE datetime not null
+);
+
+
+DROP TABLE MYPOLL ;
+create table MYPOLL(
+     POLLID		int				not null primary key,
+     USERID		varchar(20)	not null,
+	 CHOICE		char(1)		not null,
+	 CREATEDATE datetime 	not null
+);
+
+DROP TABLE CDKIND;
+create table CDKIND(
+     CDKINDID	smallint 	not null primary key,
+     CDKINDNAME varchar(50) not null,
+     CDKINDDESC varchar(200) not null,
+	 CREATOR    varchar(20) not null,
+	 UPDATER    varchar(20),
+	 CREATEDATE datetime not null,
+	 UPDATEDATE datetime,
+	 CDKINDSTAT char(1) not null
+);
+
+DROP TABLE CD;
+create table CD(
+     CDKINDID	smallint 	not null,
+	 CDVAL		varchar(10) not null,
+     CDNAME		varchar(50) not null,
+     CDDESC		varchar(200) not null,
+	 CDVALOPT1	varchar(100) ,
+	 CDVALOPT2	varchar(100) ,
+	 CDVALOPT3	varchar(100) ,
+	 CDVALOPT4	varchar(100) ,
+	 CREATOR    varchar(20) not null,
+	 UPDATER    varchar(20),
+	 CREATEDATE datetime not null,
+	 UPDATEDATE datetime,
+	 CDSTAT     char(1) not null
+);
+
+
+

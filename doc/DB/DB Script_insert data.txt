@@ -1,0 +1,50 @@
+-- CDKIND 테이블의 데이터 생성
+
+insert into CDKIND (CDKINDID, CDKINDNAME, CDKINDDESC, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDKINDSTAT)
+	values(1, '메인 카테고리', '게시판 메인 카테고리', 'admin', null, now(), null, 'Y');
+
+insert into CDKIND (CDKINDID, CDKINDNAME, CDKINDDESC, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDKINDSTAT)
+	values(2, '서브 카테고리', '게시판 서브 카테고리(CDVALOPT1 : 메인 카테고리)', 'admin', null, now(), null, 'Y');
+
+
+select * from cd;	
+-- CD 테이블의 데이터 생성
+
+-- 메인 카테고리
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(1, '1', '사회','사회', null, null, null, null, 'admin', null, now(), null, 'Y');
+	
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(1, '2', '정치','정치', null, null, null, null, 'admin', null, now(), null, 'Y');
+
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(1, '3', '경제','경제', null, null, null, null, 'admin', null, now(), null, 'Y');
+
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(1, '4', '교육','교육', null, null, null, null, 'admin', null, now(), null, 'Y');
+
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(1, '5', '스포츠','스포츠', null, null, null, null, 'admin', null, now(), null, 'Y');
+
+
+-- 서브 카테고리
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(2, '1', '야구','야구', '5', null, null, null, 'admin', null, now(), null, 'Y');
+	
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(2, '2', '축구','축구', '5', null, null, null, 'admin', null, now(), null, 'Y');
+
+insert into CD (CDKINDID, CDVAL, CDNAME, CDDESC, CDVALOPT1, CDVALOPT2, CDVALOPT3, CDVALOPT4, CREATOR, UPDATER, CREATEDATE, UPDATEDATE, CDSTAT)
+	values(2, '3', '농구','농구', '5', null, null, null, 'admin', null, now(), null, 'Y');
+
+commit;
+
+
+select * from USERINF;
+select * from BOARD;
+select * from COMMENT_MAIN;
+select * from COMMENT_SUB;
+select * from POLL;
+select * from MYPOLL;
+select * from CDKIND;
+select * from CD;
