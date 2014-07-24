@@ -8,133 +8,133 @@
 	<typeAlias alias="BoardCommentModel" type="net.nice19.smboard.board.model.BoardCommentModel"/>	
 	<select id="getBoardList" parameterClass="java.util.HashMap" resultClass="BoardModel">
 		select 
-			b.idx, b.writer, b.subject,
-			b.content, b.hitcount, b.recommendcount,
-			DATE_FORMAT(b.writedate, '%Y-%m-%d %H:%i:%s') writeDate,
-			count(c.idx) as "comment",
-			b.writerId, b.fileName, b.rnum
+			b.boardid, b.nickname, b.subject,
+			b.content, b.hitcnt, b.recommendcnt,
+			DATE_FORMAT(b.createdate, '%Y-%m-%d %H:%i:%s') writeDate,
+			count(c.commnetid) as "comment",
+			b.creator, b.fileName, b.rnum
 		from (select 
-				a.idx, a.writer, a.subject,
-				a.content, a.hitcount, a.recommendcount,
-				a.writedate, a.writerId, a.fileName, @RNUM := @RNUM + 1 rnum
+				a.boardid, a.nickname, a.subject,
+				a.content, a.hitcnt, a.recommendcnt,
+				a.createdate, a.creator, a.fileName, @RNUM := @RNUM + 1 rnum
 			from (select 
-					idx, writer, subject,
-					content, hitcount, recommendcount,
-					writedate, writerId, fileName, @RNUM := 0
-				from JMBOARD
-        		order by idx desc) a
-        ) b left outer join JMBOARD_COMMENT c on b.idx = c.linkedarticlenum
+					boardid, nickname, subject,
+					content, hitcnt, recommendcnt,
+					createdate, creator, fileName, @RNUM := 0
+				from BOARD
+        		order by boardid desc) a
+        ) b left outer join COMMENT_MAIN c on b.boardid = c.boardid
 	    where rnum between #startArticleNum# and #endArticleNum#
 	    group by
-	    	b.idx, b.writer, b.subject, 
-	    	b.content, b.hitcount, b.recommendcount, 
-	    	b.writedate, b.rnum, b.writerId, b.fileName
-	    order by b.idx desc		
+	    	b.boardid, b.nickname, b.subject, 
+	    	b.content, b.hitcnt, b.recommendcnt, 
+	    	b.createdate, b.rnum, b.creator, b.fileName
+	    order by b.boardid desc		
 	</select>
 	<select id="getTotalNum" resultClass="int">
 		select 
-			count(idx)
-		from JMBOARD
+			count(boardid)
+		from BOARD
 	</select>
 	<select id="getSearchTotalNum" resultClass="int">
 		select 
-			count(idx)
-		from JMBOARD
+			count(boardid)
+		from BOARD
 		where $type$ like '%$keyword$%'
 	</select>
 	<select id="searchArticle" parameterClass="java.util.HashMap" resultClass="BoardModel">
 		select 
-			b.idx, b.writer, b.subject,
-			b.content, b.hitcount, b.recommendcount,
-			DATE_FORMAT(b.writedate, '%Y-%m-%d %H:%i:%s') writeDate,
-			count(c.idx) as "comment", 
-			b.writerId, b.fileName, b.rnum
+			b.boardid, b.nickname, b.subject,
+			b.content, b.hitcnt, b.recommendcnt,
+			DATE_FORMAT(b.createdate, '%Y-%m-%d %H:%i:%s') writeDate,
+			count(c.boardid) as "comment", 
+			b.creator, b.fileName, b.rnum
 		from (select 
-				a.idx, a.writer, a.subject,
-				a.content, a.hitcount, a.recommendcount,
-				a.writedate, a.writerId, a.fileName, @RNUM := @RNUM + 1 rnum
+				a.boardid, a.nickname, a.subject,
+				a.content, a.hitcnt, a.recommendcnt,
+				a.createdate, a.creator, a.fileName, @RNUM := @RNUM + 1 rnum
 			from (select 
-					idx, writer, subject,
-					content, hitcount, recommendcount,
-					writedate, writerId, fileName, @RNUM := 0
-				from JMBOARD
+					boardid, nickname, subject,
+					content, hitcnt, recommendcnt,
+					createdate, creator, fileName, @RNUM := 0
+				from BOARD
 				where $type$ like '%$keyword$%'
-        		order by idx desc) a
-        ) b left outer join JMBOARD_COMMENT c on b.idx = c.linkedarticlenum
+        		order by boardid desc) a
+        ) b left outer join COMMENT_MAIN c on b.boardid = c.boardid
 	    where rnum between #startArticleNum# and #endArticleNum#
 	    group by 
-	    	b.idx, b.writer, b.subject, 
-	    	b.content, b.hitcount, b.recommendcount, 
-	    	b.writedate, b.rnum, b.writerId, b.fileName
-	    order by b.idx desc		
+	    	b.boardid, b.nickname, b.subject, 
+	    	b.content, b.hitcnt, b.recommendcnt, 
+	    	b.createdate, b.rnum, b.creator, b.fileName
+	    order by b.boardid desc		
 	</select>
 	<select id="getOneArticle" parameterClass="int" resultClass="BoardModel">
 		select
-			idx,
-			writer,
+			boardid,
+			nickname,
 			subject,
 			content,
-			hitcount,
-			recommendcount,
-			writedate,
-			writerId,
+			hitcnt,
+			recommendcnt,
+			createdate,
+			creator,
 			fileName
-		from JMBOARD
-    	where idx = #idx#
+		from BOARD
+    	where boardid = #idx#
 	</select>
 	<select id="getCommentList" parameterClass="int" resultClass="BoardCommentModel">
 		select 
-			idx, writer, content, 
-			writeDate, linkedArticleNum, writerId
-		from JMBOARD_COMMENT
-  		where linkedArticleNum = #idx#
-  		order by idx desc
+			commentid, writer, content, 
+			createdate, boardid, creator
+		from COMMENT_MAIN
+  		where boardid = #idx#
+  		order by commentid desc
 	</select>
 	<select id="getOneComment" parameterClass="int" resultClass="BoardCommentModel">
 		select 
-			idx, writer,
+			commentid, writer,
 			content, 
-			writeDate, linkedArticleNum, writerId
-		from JMBOARD_COMMENT
-  		where idx = #idx#		
+			createdate, boardid, creator
+		from COMMENT_MAIN
+  		where commentid = #idx#		
 	</select>
 	<insert id="writeArticle" parameterClass="BoardModel">
-		insert into JMBOARD(writer, subject, content, hitcount, recommendcount, writeDate, writerId, fileName)
+		insert into BOARD(writer, subject, content, hitcnt, recommendcnt, createdate, creator, fileName)
 			values(#writer#, #subject#, #content#, 0, 0, now(), #writerId#, #fileName#)
 	</insert>
 	<insert id="writeComment" parameterClass="BoardCommentModel">
-		insert into JMBOARD_COMMENT(writer, content, writeDate, linkedArticleNum, writerId)
+		insert into COMMENT_MAIN(writer, content, createdate, boardid, creator)
 			values(#writer#, #content#, now(), #linkedArticleNum#, #writerId#)
 	</insert>
 	
 	<update id="updateHitcount" parameterClass="java.util.HashMap">
 		update 
-			JMBOARD 
-		set hitcount = #hitcount#
-		where idx = #idx#
+			BOARD 
+		set hitcnt = #hitcount#
+		where boardid = #idx#
 	</update>
 	<update id="updateRecommendcount" parameterClass="java.util.HashMap">
 		update
-			JMBOARD
-		set recommendcount = #recommendcount#
-		where idx = #idx#
+			BOARD
+		set recommendcnt = #recommendcount#
+		where boardid = #idx#
 	</update>
 	<delete id="deleteComment" parameterClass="int">
 		delete
-		from JMBOARD_COMMENT
-		where idx = #idx#
+		from COMMENT_MAIN
+		where commnetid = #idx#
 	</delete>
 	<delete id="deleteArticle" parameterClass="int">
 		delete
-		from JMBOARD
-		where idx = #idx#	
+		from BOARD
+		where boardid = #idx#	
 	</delete>
 	<update id="modifyArticle" parameterClass="BoardModel">
-		update JMBOARD
+		update BOARD
 		set subject = #subject#,
 			content = #content#,
 			fileName = #fileName#
-		where idx = #idx#
+		where boardid = #idx#
 	</update>
 </sqlMap>
 
