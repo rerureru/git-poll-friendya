@@ -8,7 +8,8 @@ create table USERINF(
      PHNNUMBER  varchar(20) ,
 	 ADDRESS    varchar(60) ,
 	 CREATEDATE datetime 	not null,
-	 UPDATEDATE datetime
+	 UPDATEDATE datetime,
+	 JOINDATE datetime
 );
 
 DROP TABLE BOARD ;
@@ -21,7 +22,8 @@ create table BOARD(
      RECOMMENDCNT int,
 	 CREATOR    varchar(20) not null,
 	 CREATEDATE datetime 	not null,
-	 UPDATEDATE datetime
+	 UPDATEDATE datetime,
+	 FILENAME	varchar(60)
 );
 
 DROP TABLE COMMENT_MAIN ;
