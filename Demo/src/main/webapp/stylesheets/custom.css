@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Custom Static page styles
+   ========================================================================== */
+
+body { padding-top: 50px; }
+  
+  
+/* Logo */  
+.brand { 
+    font-weight:300; 
+    padding-bottom: 10px;
+    }  
+  
+  
+/* Navigation */
+.static .navbar .navbar-inner {
+    padding: 0;
+    }
+    .static .navbar .nav {
+        margin: 0;
+        display: table;
+        width: 100%;
+        }
+        .static .navbar .nav li {
+            display: table-cell;
+            width: 1%;
+            float: none;
+            text-align: center;
+            }
+            .static .navbar .nav li a {
+                font-weight: 600;
+                border-left: 1px solid #fff;
+                border-right: 1px solid #ddd;
+                }
+                .static .navbar .nav > .active > a, 
+                .static .navbar .nav > .active > a:hover, 
+                .static .navbar .nav > .active > a:focus {
+                    border-left: 1px solid #CCCCCC !important;
+                    }
+
+      .static .navbar .nav li:first-child a { border-left:  0; }
+      .static .navbar .nav li:last-child a  { border-right: 0; }
+
+
+ /* Featured unit */
+.hero-unit {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box; 
+}
+ 
+ 
+/* Content */ 
+.main-content { padding: 0 0 40px 0; }  
+  
+  
+/* Footer */
+.footer {
+    background: #EEEEEE;
+    padding: 20px 0 50px 0;
+    }
+    .copyright { float: left; }
+    .back-top  { float: right; }
+
+
+
+
+
+
+/* ==========================================================================
+   Custom Responsive page styles
+   ========================================================================== */
+
+/* Logo */
+.responsive .navbar h1 {
+     margin: 0px;
+    }
+    .responsive .navbar .brand {
+         padding: 0px 20px!important;
+        }
+
+
+/* Fixed menu Margin fix */
+@media only screen and (max-width : 979px) {
+    .responsive {
+        padding-top: 0 !important;
+    }  
+}        
