@@ -95,7 +95,7 @@
 					<td>${article.createDate}</td>
 					<td>${article.hitCNT}</td>
 			 		<td>${article.recommendCNT}</td>
-					<td>${article.lnb.cDName}</td>
+					<td>${article.gnb.cDName}>${article.lnb.cDName}</td>
 				</tr>
 			</c:forEach>
 			</tbody>

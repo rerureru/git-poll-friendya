@@ -18,7 +18,10 @@
 	
 	<select id="getArticleListAll" resultMap="boardDtoResultMap">
 		select b.BOARDID, b.CATETORYID, b.SUBJECT, b.HITCNT, 
-		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE, c.CDVAL, c.CDNAME 
+		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE,
+		(select d.cdval from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbid",
+		(select d.cdname from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbname",
+		c.CDVAL "lnbid", c.CDNAME "lnbname"
 		from board b, cd c 
 		where c.CDKINDID=2 and b.CATETORYID=c.CDVAL 
  	</select>
@@ -27,14 +30,20 @@
 	
 	<select id="getArticleListInLNB" resultMap="boardDtoResultMap">
 		select b.BOARDID, b.CATETORYID, b.SUBJECT, b.HITCNT, 
-		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE, c.CDVAL, c.CDNAME 
+		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE, 
+		(select d.cdval from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbid",
+		(select d.cdname from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbname",
+		c.CDVAL "lnbid", c.CDNAME "lnbname" 
 		from board b, cd c 
 		where c.CDKINDID=2 and b.CATETORYID=c.CDVAL and b.CATETORYID=#{lnb}
 	</select>
 	
 	<select id="getArticleListInGNB" resultMap="boardDtoResultMap">
 		select b.BOARDID, b.CATETORYID, b.SUBJECT, b.HITCNT, 
-		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE, c.CDVAL, c.CDNAME 
+		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE, 
+		(select d.cdval from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbid",
+		(select d.cdname from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbname",
+		c.CDVAL "lnbid", c.CDNAME "lnbname" 
 		from board b, cd c 
 		where c.CDKINDID=2 
 				and b.CATETORYID=c.CDVAL 
@@ -50,10 +59,15 @@
  		<result column="CREATOR" jdbcType="INTEGER" property="creator" />
  		<result column="CREATEDATE" jdbcType="TIMESTAMP" property="createDate" />
  		<result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updateDate" />
+ 		<association property="gnb" column="CATETORYID" javaType="CDDto">
+ 			<id column="gnbid" jdbcType="INTEGER" property="cDVal" />
+ 			<result column="gnbid" jdbcType="VARCHAR" property="cDVal" />
+ 			<result column="gnbname" jdbcType="VARCHAR" property="cDName" />
+ 		</association>
  		<association property="lnb" column="CATETORYID" javaType="CDDto">
- 			<id column="CDVAL" jdbcType="INTEGER" property="cDVal" />
- 			<result column="CDVAL" jdbcType="VARCHAR" property="cDVal" />
- 			<result column="CDNAME" jdbcType="VARCHAR" property="cDName" />
+ 			<id column="lnbid" jdbcType="INTEGER" property="cDVal" />
+ 			<result column="lnbid" jdbcType="VARCHAR" property="cDVal" />
+ 			<result column="lnbname" jdbcType="VARCHAR" property="cDName" />
  		</association>
  	</resultMap>
 </mapper>

@@ -76,6 +76,7 @@ public class BoardPageDaoManager {
 		SqlSession session = sqlMapper.openSession();
 		try {
 			result = session.selectList( "getArticleListAll" );
+			logger.info( "BoardPageDaoManager getArticleAll" +result );
 		} finally {
 			session.close();
 		}

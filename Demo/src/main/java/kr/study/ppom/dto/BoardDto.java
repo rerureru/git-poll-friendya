@@ -16,6 +16,7 @@ public class BoardDto implements Serializable {
 	private Date createDate; 
 	private Date updateDate;
 	
+	private CDDto gnb;
 	private CDDto lnb;
 	
 	public CDDto getLnb() {
@@ -27,12 +28,7 @@ public class BoardDto implements Serializable {
 	public int getBoardID() {
 		return boardID;
 	}
-	public void setBoardID(int boardID) {
-		this.boardID = boardID;
-	}
-	public String getCategoryID() {
-		return catetoryID;
-	}
+	
 	public void setCategoryID(String categoryID) {
 		this.catetoryID = categoryID;
 	}
@@ -78,6 +74,20 @@ public class BoardDto implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+	
+	
+	public String getCatetoryID() {
+		return catetoryID;
+	}
+	public void setCatetoryID(String catetoryID) {
+		this.catetoryID = catetoryID;
+	}
+	public CDDto getGnb() {
+		return gnb;
+	}
+	public void setGnb(CDDto gnb) {
+		this.gnb = gnb;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,13 +108,12 @@ public class BoardDto implements Serializable {
 			return false;
 		return true;
 	}
-	
 	@Override
 	public String toString() {
 		return "BoardDto [boardID=" + boardID + ", catetoryID=" + catetoryID
 				+ ", subject=" + subject + ", content=" + content + ", hitCNT="
 				+ hitCNT + ", recommendCNT=" + recommendCNT + ", creator="
 				+ creator + ", createDate=" + createDate + ", updateDate="
-				+ updateDate + ", lnb=" + lnb + "]";
-	}
+				+ updateDate + ", gnb=" + gnb + ", lnb=" + lnb + "]";
+	}	
 }
