@@ -95,7 +95,11 @@
 					<td>${article.createDate}</td>
 					<td>${article.hitCNT}</td>
 			 		<td>${article.recommendCNT}</td>
-					<td>${article.gnb.cDName}>${article.lnb.cDName}</td>
+					<td>
+						<a href="boardList.action?gnb=${article.gnb.cDVal}">${article.gnb.cDName}</a>
+						>
+						<a href="boardList.action?gnb=${article.gnb.cDVal}&lnb=${article.lnb.cDVal}">${article.lnb.cDName}</a>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>
