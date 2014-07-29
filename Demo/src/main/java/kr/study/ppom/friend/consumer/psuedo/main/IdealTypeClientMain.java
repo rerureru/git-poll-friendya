@@ -1,4 +1,4 @@
-package kr.study.ppom.friend.service.psuedo.main;
+package kr.study.ppom.friend.consumer.psuedo.main;
 
 import java.util.Iterator;
 import java.util.List;

@@ -8,6 +8,6 @@
 	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
 		p:baseAddress="http://localhost:8888/services/" />
 
-	<context:component-scan base-package="kr.study.ppom.demo" />
+	<context:component-scan base-package="kr.study.ppom.friend.demo" />
 	<context:annotation-config />
 </beans>

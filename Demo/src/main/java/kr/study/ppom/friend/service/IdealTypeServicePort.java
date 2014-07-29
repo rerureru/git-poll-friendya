@@ -5,7 +5,7 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-@WebService(name="IdealTypeServicePort", targetNamespace="http://demo.ppom.study.kr/")
+@WebService(name="IdealTypeServicePort", targetNamespace="http://demo.friend.ppom.study.kr/")
 public interface IdealTypeServicePort {
 	//create() {CreatorId, TopicId} : {success or fail}
 	@WebMethod

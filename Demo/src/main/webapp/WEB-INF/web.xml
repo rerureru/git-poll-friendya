@@ -29,7 +29,10 @@
 		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/idealtype-demoservice.xml
+		</param-value>
 	</context-param>
 
 	<!-- Processes application requests -->
@@ -65,10 +68,6 @@
 		<url-pattern>*.swf</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-	    <servlet-name>IdealTypeWSServer</servlet-name>
-	    <servlet-class>kr.study.ppom.demo.IdealTypeDemoServlet</servlet-class>
-	    <load-on-startup>1</load-on-startup>
-	</servlet>
+	
 
 </web-app>

@@ -1,4 +1,4 @@
-package kr.study.ppom.demo;
+package kr.study.ppom.friend.demo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package kr.study.ppom.demo;
+package kr.study.ppom.friend.demo;
 
 
 public class IdealTypeScore implements Comparable<IdealTypeScore>{

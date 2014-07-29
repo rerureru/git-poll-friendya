@@ -11,6 +11,6 @@
 		p:wsdlDocumentUrl="http://localhost:8888/services/IdealTypeService?wsdl"
 		p:serviceName="IdealTypeService" p:portName="IdealTypeServiceEndpointPort"
 		p:serviceInterface="kr.study.ppom.friend.service.IdealTypeServicePort" 
-		p:namespaceUri="http://demo.ppom.study.kr/" />
+		p:namespaceUri="http://demo.friend.ppom.study.kr/" />
 		<!--  p:namespaceUri="http://service.friend.ppom.study.kr/" /> -->
 </beans>
