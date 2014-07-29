@@ -10,6 +10,7 @@
 		<config>src/main/webapp/WEB-INF/spring/appServlet/controller-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/url-context.xml</config>
 		<config>src/main/resources/idealtype-demoservice.xml</config>
+		<config>src/main/resources/idealtype-dummy-client.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
