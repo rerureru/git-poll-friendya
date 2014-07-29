@@ -15,7 +15,7 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
-	
+
 	<filter-mapping>
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -25,7 +25,8 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
@@ -38,17 +39,36 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/spring/appServlet/simpleUrl-context.xml <!-- url mapping configure -->
+				/WEB-INF/spring/appServlet/url-context.xml <!-- url mapping configure -->
 				/WEB-INF/spring/appServlet/controller-context.xml <!-- controller configure -->
 			</param-value>
-				
+
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
-		
+
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>*.action</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.html</url-pattern>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.gif</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.ico</url-pattern>
+		<url-pattern>*.swf</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>IdealTypeWSServer</servlet-name>
+	    <servlet-class>kr.study.ppom.demo.IdealTypeDemoServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
 
 </web-app>
