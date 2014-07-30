@@ -135,9 +135,14 @@
 						<td>${article.createDate}</td>
 						<td>${article.hitCNT}</td>
 						<td>${article.recommendCNT}</td>
-						<td><a href="boardList.action?gnb=${article.gnb.cDVal}">${article.gnb.cDName}</a>
-							> <a
-							href="boardList.action?gnb=${article.gnb.cDVal}&lnb=${article.lnb.cDVal}">${article.lnb.cDName}</a>
+						<td><c:url var="gnbURL"
+								value="boardList.action?gnb=${article.gnb.cDVal}" />
+						<a href="${gnbURL}">${article.gnb.cDName}</a>
+							> 
+							<c:url var="lnbURL"
+								value="boardList.action?gnb=${article.gnb.cDVal}&lnb=${article.lnb.cDVal}" />
+							<a href="${lnbURL}">
+							${article.lnb.cDName}</a>
 						</td>
 					</tr>
 				</c:forEach>
