@@ -7,8 +7,8 @@
 	<properties resource="db/mybatis/db.properties"/>
 	
 	<typeAliases>
-		<typeAlias alias="CDDto" type="kr.study.ppom.dto.CDDto"/>
-		<typeAlias alias="BoardDto" type="kr.study.ppom.dto.BoardDto"/>
+		<typeAlias alias="CDDto" type="kr.study.ppom.article.dto.CDDto"/>
+		<typeAlias alias="BoardDto" type="kr.study.ppom.article.dto.BoardDto"/>
 	</typeAliases>
 	
 	<environments default="development">
