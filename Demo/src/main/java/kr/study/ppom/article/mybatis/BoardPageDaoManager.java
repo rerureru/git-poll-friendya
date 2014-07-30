@@ -1,4 +1,4 @@
-package kr.study.ppom.mybatis;
+package kr.study.ppom.article.mybatis;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import kr.study.ppom.dto.BoardDto;
-import kr.study.ppom.dto.CDDto;
+import kr.study.ppom.article.dto.BoardDto;
+import kr.study.ppom.article.dto.CDDto;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

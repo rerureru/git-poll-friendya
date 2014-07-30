@@ -1,14 +1,14 @@
-package kr.study.ppom.service;
+package kr.study.ppom.article.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.study.ppom.dao.BoardPageDao;
-import kr.study.ppom.dto.BoardDto;
-import kr.study.ppom.dto.CDDto;
-import kr.study.ppom.model.ArticleListModel;
-import kr.study.ppom.model.PageNavigationBarModel;
-import kr.study.ppom.model.SelectedMenu;
+import kr.study.ppom.article.dao.BoardPageDao;
+import kr.study.ppom.article.dto.BoardDto;
+import kr.study.ppom.article.dto.CDDto;
+import kr.study.ppom.article.model.ArticleListModel;
+import kr.study.ppom.article.model.PageNavigationBarModel;
+import kr.study.ppom.article.model.SelectedMenu;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

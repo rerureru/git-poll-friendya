@@ -15,8 +15,8 @@
 	<annotation-driven />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	<context:component-scan base-package="kr.study.ppom.controller" />
-	<context:component-scan base-package="kr.study.ppom.service" />
-	<context:component-scan base-package="kr.study.ppom.dao" />
+	<context:component-scan base-package="kr.study.ppom.article.service" />
+	<context:component-scan base-package="kr.study.ppom.article.dao" />
 	
 	<aop:aspectj-autoproxy/>	
 	

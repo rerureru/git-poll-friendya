@@ -1,8 +1,8 @@
 package kr.study.ppom.controller;
 
-import kr.study.ppom.model.ArticleListModel;
-import kr.study.ppom.model.PageNavigationBarModel;
-import kr.study.ppom.service.BoardPageService;
+import kr.study.ppom.article.model.ArticleListModel;
+import kr.study.ppom.article.model.PageNavigationBarModel;
+import kr.study.ppom.article.service.BoardPageService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

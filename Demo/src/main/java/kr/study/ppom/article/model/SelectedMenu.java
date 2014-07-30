@@ -1,4 +1,4 @@
-package kr.study.ppom.model;
+package kr.study.ppom.article.model;
 
 import java.io.Serializable;
 

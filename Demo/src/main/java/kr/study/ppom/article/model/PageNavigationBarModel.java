@@ -1,8 +1,8 @@
-package kr.study.ppom.model;
+package kr.study.ppom.article.model;
 
 import java.util.List;
 
-import kr.study.ppom.dto.CDDto;
+import kr.study.ppom.article.dto.CDDto;
 
 public class PageNavigationBarModel {
 	private List<CDDto> globalNavigationBar;

@@ -1,9 +1,9 @@
-package kr.study.ppom.dao;
+package kr.study.ppom.article.dao;
 
 import java.util.List;
 
-import kr.study.ppom.dto.BoardDto;
-import kr.study.ppom.dto.CDDto;
+import kr.study.ppom.article.dto.BoardDto;
+import kr.study.ppom.article.dto.CDDto;
 
 public interface BoardPageDao {
 

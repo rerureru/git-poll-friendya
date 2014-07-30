@@ -1,8 +1,8 @@
-package kr.study.ppom.model;
+package kr.study.ppom.article.model;
 
 import java.util.List;
 
-import kr.study.ppom.dto.BoardDto;
+import kr.study.ppom.article.dto.BoardDto;
 
 
 public class ArticleListModel {
