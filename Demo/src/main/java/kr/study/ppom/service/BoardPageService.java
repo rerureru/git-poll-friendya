@@ -1,8 +1,12 @@
 package kr.study.ppom.service;
 
-import kr.study.ppom.model.BoardPageModel;
+import kr.study.ppom.model.ArticleListModel;
+import kr.study.ppom.model.PageNavigationBarModel;
 
 public interface BoardPageService {
-	BoardPageModel getBoardPageModel(String clickedGNB, String clickedLNB);
+	ArticleListModel getArticleListModel(String clickedGNB, String clickedLNB);
+
+	PageNavigationBarModel getPageNavigationBarModel(String clickedGNB,
+			String clickedLNB);
 
 }

@@ -1,7 +1,7 @@
 package kr.study.ppom.controller;
 
-import kr.study.ppom.common.BoardPagePartName;
-import kr.study.ppom.model.BoardPageModel;
+import kr.study.ppom.model.ArticleListModel;
+import kr.study.ppom.model.PageNavigationBarModel;
 import kr.study.ppom.service.BoardPageService;
 
 import org.slf4j.Logger;
@@ -24,14 +24,18 @@ public class BoardPageController {
 			@RequestParam(value="gnb", required=false) String clickedGNB, 
 			@RequestParam(value="lnb",required=false) String clickedLNB ) {
 		logger.info("BoardPageService Called");
-		BoardPageModel boardPageModel = 
-				boardPageService.getBoardPageModel( clickedGNB, clickedLNB );
+		
+		
+		PageNavigationBarModel pageNavigationBarModel = 
+				boardPageService.getPageNavigationBarModel(clickedGNB, clickedLNB);
+		ArticleListModel articleListModel = 
+				boardPageService.getArticleListModel( clickedGNB, clickedLNB );
 				
 		ModelAndView boardMAV = new ModelAndView();
-		boardMAV.addObject("boardGNB", boardPageModel.getModel( BoardPagePartName.GlobalNavigationBar));
-		boardMAV.addObject("boardLNB", boardPageModel.getModel( BoardPagePartName.LocalNavigationBar));
-		boardMAV.addObject("boardContent", boardPageModel.getModel(BoardPagePartName.BoardContent));
-		boardMAV.addObject("selectedMenu", boardPageModel.getModel(BoardPagePartName.SelecetedMenu));
+		boardMAV.addObject("boardGNB", pageNavigationBarModel.getGlobalNavigationBar());
+		boardMAV.addObject("boardLNB", pageNavigationBarModel.getLocalNavigationBar());
+		boardMAV.addObject("selectedMenu", pageNavigationBarModel.getSelectedMenu());
+		boardMAV.addObject("boardContent", articleListModel);
 		boardMAV.setViewName("jsp/board/boardList");
 		
 		return boardMAV;

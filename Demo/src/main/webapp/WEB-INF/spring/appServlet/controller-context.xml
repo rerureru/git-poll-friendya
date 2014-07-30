@@ -18,8 +18,6 @@
 	<context:component-scan base-package="kr.study.ppom.service" />
 	<context:component-scan base-package="kr.study.ppom.dao" />
 	
-	<context:component-scan base-package="kr.study.ppom.aspect" />
-	
 	<aop:aspectj-autoproxy/>	
 	
 	<beans:bean id="idealTypeServiceClient"
