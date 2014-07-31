@@ -1,9 +1,0 @@
-driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@localhost:1521:xe
-username=shopadmin
-password=skdmlRna82
-
-driver = com.mysql.jdbc.Driver
-url = jdbc:mysql://1.215.174.74/test
-username = pyonhae
-password = asdfqwer12
