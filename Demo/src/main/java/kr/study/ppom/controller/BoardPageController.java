@@ -49,4 +49,10 @@ public class BoardPageController {
 		articleMAV.setViewName("home");
 		return articleMAV;
 	}
+	
+	@RequestMapping("/newArticle.action")
+	public ModelAndView createArticle(){ 
+		logger.info("newArticle Called : " );
+		return null;
+	}
 }
