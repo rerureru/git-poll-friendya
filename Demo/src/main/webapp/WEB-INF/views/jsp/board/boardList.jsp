@@ -168,8 +168,6 @@
 	
 	<sec:authorize access="isAuthenticated()">
 	<div id="idealType">
-		<input id="userid" name="userid" type="text" />
-		<button id="queryIdealType">이상형</button>
 		<div id="idealTypeListBox"></div>
 	</div>
 	
