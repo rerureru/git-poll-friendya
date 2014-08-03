@@ -3,17 +3,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="db.mybatis.BoardPageMapper">
+<mapper namespace="kr.study.ppom.article.repository.BoardPageMapper">
 	<select id="getGNBList" resultType="CDDto">
 		select * from cd where CDKINDID="1" 
 	</select>
 	
 	<select id="getLNBListByGNBId"  parameterType="String" resultType="CDDto">
 		select * from cd where CDKINDID=2 and CDVALOPT1=#{clickedCategory}
-	</select>
-	
-	<select id="getGNBIdByLNBId"  parameterType="String" resultType="String">
-		select CDVALOPT1 from cd where CDKINDID=2 and CDval=#{category}
 	</select>
 	
 	<select id="getArticleListAll" resultMap="boardDtoResultMap">
@@ -24,9 +20,7 @@
 		c.CDVAL "lnbid", c.CDNAME "lnbname"
 		from board b, cd c 
 		where c.CDKINDID=2 and b.CATETORYID=c.CDVAL 
- 	</select>
- 	
- 	
+ 	</select>	
 	
 	<select id="getArticleListInLNB" resultMap="boardDtoResultMap">
 		select b.BOARDID, b.CATETORYID, b.SUBJECT, b.HITCNT, 

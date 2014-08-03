@@ -2,9 +2,7 @@ package kr.study.ppom.article.repository;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import kr.study.ppom.article.dto.BoardDto;
 import kr.study.ppom.article.dto.CDDto;
@@ -44,7 +42,7 @@ public class BoardPageDaoManager {
 		
 		SqlSession session = sqlMapper.openSession();
 		try {
-		result = session.selectList( "getGNBList" );
+			result = session.getMapper(BoardPageMapper.class).getGNBList();
 		}finally {
 			session.close();
 		}
@@ -59,7 +57,7 @@ public class BoardPageDaoManager {
 		
 		SqlSession session = sqlMapper.openSession();
 		try {
-			result = session.selectList( "getLNBListByGNBId", clickedCategory );
+			result = session.getMapper(BoardPageMapper.class).getLNBListByGNBId(clickedCategory);
 		} finally {
 			session.close();
 		}
@@ -75,7 +73,7 @@ public class BoardPageDaoManager {
 		
 		SqlSession session = sqlMapper.openSession();
 		try {
-			result = session.selectList( "getArticleListAll" );
+			result = session.getMapper(BoardPageMapper.class).getArticleListAll();
 			logger.info( "BoardPageDaoManager getArticleAll" +result );
 		} finally {
 			session.close();
@@ -92,7 +90,7 @@ public class BoardPageDaoManager {
 		
 		SqlSession session = sqlMapper.openSession();
 		try {
-			result = session.selectList( "getArticleListInLNB", lnb );
+			result = session.getMapper(BoardPageMapper.class).getArticleListInLNB(lnb);
 		} finally {
 			session.close();
 		}
@@ -107,7 +105,7 @@ public class BoardPageDaoManager {
 		
 		SqlSession session = sqlMapper.openSession();
 		try {
-			result = session.selectList( "getArticleListInGNB", gnb );
+			result = session.getMapper(BoardPageMapper.class).getArticleListInGNB(gnb);
 		} finally {
 			session.close();
 		}
