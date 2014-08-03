@@ -63,7 +63,7 @@ public class BoardPageServiceImpl implements BoardPageService {
 		CDDto cdDtoTmp = new CDDto();
 		cdDtoTmp.setcDKindID(2);
 		cdDtoTmp.setcDVal("0");
-		cdDtoTmp.setcDName("ÀüÃ¼º¸±â");
+		cdDtoTmp.setcDName("ì „ì²´ë³´ê¸°");
 		
 		lnbList.add(cdDtoTmp);
 		
