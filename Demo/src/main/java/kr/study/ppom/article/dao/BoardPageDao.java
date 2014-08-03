@@ -15,5 +15,5 @@ public interface BoardPageDao {
 	List<BoardDto> lookupArticleListAll();
 	List<BoardDto> lookupArticleListInGNB(String gnb);
 	List<BoardDto> lookupArticleListInLNB(String lnb);
-	int getCount(String clickedGNB, String clickedLNB);
+	int getArticleCount(String clickedGNB, String clickedLNB);
 }

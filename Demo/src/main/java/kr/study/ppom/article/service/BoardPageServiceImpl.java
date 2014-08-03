@@ -26,7 +26,7 @@ public class BoardPageServiceImpl implements BoardPageService {
 	public ArticleListModel getArticleListModel(String clickedGNB, String clickedLNB) {				 
 		ArticleListModel articleListModel = new ArticleListModel();
 		articleListModel.setArticleList( getArticleList( clickedGNB, clickedLNB) );
-		articleListModel.setArticleTotalCount( boardPageDao.getCount(clickedGNB, clickedLNB ) );
+		articleListModel.setArticleTotalCount( boardPageDao.getArticleCount(clickedGNB, clickedLNB ) );
 		
 		return articleListModel;
 	}

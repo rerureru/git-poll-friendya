@@ -59,7 +59,7 @@ public class  BoardPageDaoImpl implements BoardPageDao {
 	}
 
 	@Override
-	public int getCount(String clickedGNB, String clickedLNB) {
+	public int getArticleCount(String clickedGNB, String clickedLNB) {
 		// TODO Auto-generated method stub
 		return 0;
 	}	
