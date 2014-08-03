@@ -74,10 +74,10 @@
 			
 			<sec:authentication property="principal.username" var="currentUserName"/>
 	
-			var jsonServerAddr = "http://localhost:8090/demo/friend/users/"
-					+ "${currentUserName}" + "/idealtype";
-			console.log("--------------"+jsonServerAddr);
-			$.getJSON(jsonServerAddr,'',
+			<c:url var="idealTypeRestUrl" value="/friend/users/${currentUserName}/idealtype" />
+			
+			console.log("--------------"+"${idealTypeRestUrl}");
+			$.getJSON("${idealTypeRestUrl}",'',
 				function(idealTypeList) {
 					var idealTypeHTML = '';
 					console.log("iamcalled");
