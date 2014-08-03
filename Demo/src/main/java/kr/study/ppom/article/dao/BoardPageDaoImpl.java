@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.study.ppom.article.dto.BoardDto;
 import kr.study.ppom.article.dto.CDDto;
-import kr.study.ppom.article.mybatis.BoardPageDaoManager;
+import kr.study.ppom.article.repository.BoardPageDaoManager;
 
 import org.springframework.stereotype.Repository;
 

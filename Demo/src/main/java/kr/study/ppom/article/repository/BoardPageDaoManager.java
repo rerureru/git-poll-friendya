@@ -1,4 +1,4 @@
-package kr.study.ppom.article.mybatis;
+package kr.study.ppom.article.repository;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -26,7 +26,7 @@ public class BoardPageDaoManager {
 		try {
 			logger.info("BoardPageDaoManager init start..");
 			Reader reader = Resources
-					.getResourceAsReader("db/mybatis/SqlMapConfig.xml");
+					.getResourceAsReader("kr/study/ppom/article/repository/SqlMapConfig.xml");
 			logger.info( "BoardPageDaoManager init success.." );
 			sqlMapper = new SqlSessionFactoryBuilder().build(reader);
 			reader.close();

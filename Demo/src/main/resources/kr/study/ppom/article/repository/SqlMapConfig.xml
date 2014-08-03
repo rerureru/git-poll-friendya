@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<properties resource="db/mybatis/db.properties"/>
+	<properties resource="kr/study/ppom/article/repository/db.properties"/>
 	
 	<typeAliases>
 		<typeAlias alias="CDDto" type="kr.study.ppom.article.dto.CDDto"/>
@@ -27,6 +27,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="db/mybatis/BoardPageMapper.xml"/>
+		<mapper resource="kr/study/ppom/article/repository/BoardPageMapper.xml"/>
 	</mappers>
 </configuration>
