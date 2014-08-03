@@ -3,11 +3,11 @@ package kr.study.ppom.friend.demo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OpinionFactory {
+public class OpinionRepository {
 	private static Map<String, OpinionUser> users = new HashMap<String, OpinionUser>();
 	private static Map<String, OpinionTopic> topics = new HashMap<String, OpinionTopic>();
 	
-	private OpinionFactory(){
+	private OpinionRepository(){
 		
 	}
 

@@ -12,8 +12,8 @@ public class PseudoIdealTypeServiceImpl implements IdealTypeService {
 	
 	@Override
 	public boolean create(String creatorId, String topicId, int level ) {
-		OpinionUser user = OpinionFactory.queryUser(creatorId);
-		OpinionTopic topic = OpinionFactory.createTopic( topicId );
+		OpinionUser user = OpinionRepository.queryUser(creatorId);
+		OpinionTopic topic = OpinionRepository.createTopic( topicId );
 		if( topic == null ){
 			return false;
 		}
@@ -26,8 +26,8 @@ public class PseudoIdealTypeServiceImpl implements IdealTypeService {
 
 	@Override
 	public boolean submit(String topicId, String voterId, int opinionLevel ) {
-		OpinionUser user = OpinionFactory.queryUser(voterId);
-		OpinionTopic topic = OpinionFactory.queryTopic( topicId );
+		OpinionUser user = OpinionRepository.queryUser(voterId);
+		OpinionTopic topic = OpinionRepository.queryTopic( topicId );
 		
 		if(topic == null) {
 			return false;
@@ -43,13 +43,13 @@ public class PseudoIdealTypeServiceImpl implements IdealTypeService {
 
 	@Override
 	public List<IdealTypeScore> requestIdealType(String userId ) {
-		OpinionUser user = OpinionFactory.queryUser(userId);
+		OpinionUser user = OpinionRepository.queryUser(userId);
 		return  calculator.calculteIdealType( user );
 	}
 
 	@Override
 	public int requestTopicCount() {
-		return OpinionFactory.queryTopicCount();
+		return OpinionRepository.queryTopicCount();
 	}
 
 }
