@@ -22,10 +22,18 @@
 	</filter-mapping>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+		</param-value>
+	</context-param>
+	
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>
@@ -41,14 +49,14 @@
 
 	<!-- The definition of the Root Spring Container shared by all Servlets 
 		and Filters -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			/WEB-INF/spring/root-context.xml
-			/WEB-INF/spring/idealtype-demoservice.xml
-			/WEB-INF/spring/security-context.xml
-		</param-value>
-	</context-param>
+
+
+	<servlet>
+	    <servlet-name>IdealTypeWSServer</servlet-name>
+	    <servlet-class>kr.study.ppom.friend.demo.PseudoIdealTypeServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+
 
 	<!-- Processes application requests -->
 	<servlet>
@@ -62,7 +70,7 @@
 			</param-value>
 
 		</init-param>
-		<load-on-startup>2</load-on-startup>
+		<load-on-startup>4</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>

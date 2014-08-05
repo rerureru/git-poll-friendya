@@ -28,6 +28,7 @@ public class BoardPageServiceImpl implements BoardPageService {
 		articleListModel.setArticleList( getArticleList( clickedGNB, clickedLNB) );
 		articleListModel.setArticleTotalCount( boardPageDao.getArticleCount(clickedGNB, clickedLNB ) );
 		
+		
 		return articleListModel;
 	}
 	
@@ -48,14 +49,17 @@ public class BoardPageServiceImpl implements BoardPageService {
 		
 		if(gnb == null ) {
 			boardList = boardPageDao.lookupArticleListAll();
+			logger.info( "[article list service] " + boardList.toString() );
 		} else if(lnb == null || "0".equals(lnb)) {
 			boardList = boardPageDao.lookupArticleListInGNB(gnb);
+			logger.info( "[article list service] " + boardList.toString() );
 		} else {
 			boardList = boardPageDao.lookupArticleListInLNB(lnb);
+			logger.info( "[article list service] " + boardList.toString() );
 			
 		}
 		
-		logger.info( boardList.toString() );
+		
 		return boardList;
 	}	
 	

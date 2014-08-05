@@ -16,7 +16,7 @@ public class  BoardPageDaoImpl implements BoardPageDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<CDDto> lookupGlobalNavigationBar(){
+	public List<CDDto> lookupGlobalNavigationBar() {
 		return sqlSession.getMapper(BoardPageMapper.class).getGNBList();
 	}
 
