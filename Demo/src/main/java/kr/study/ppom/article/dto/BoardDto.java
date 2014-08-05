@@ -19,6 +19,14 @@ public class BoardDto implements Serializable {
 	private CDDto gnb;
 	private CDDto lnb;
 	
+	private UserDto userinf;
+	
+	public UserDto getUserinf() {
+		return userinf;
+	}
+	public void setUserinf(UserDto userinf) {
+		this.userinf = userinf;
+	}
 	public CDDto getLnb() {
 		return lnb;
 	}
@@ -27,6 +35,9 @@ public class BoardDto implements Serializable {
 	}
 	public int getBoardID() {
 		return boardID;
+	}
+	public void setBoardID( int boardID) {
+		this.boardID = boardID;
 	}
 	
 	public void setCategoryID(String categoryID) {
@@ -114,6 +125,8 @@ public class BoardDto implements Serializable {
 				+ ", subject=" + subject + ", content=" + content + ", hitCNT="
 				+ hitCNT + ", recommendCNT=" + recommendCNT + ", creator="
 				+ creator + ", createDate=" + createDate + ", updateDate="
-				+ updateDate + ", gnb=" + gnb + ", lnb=" + lnb + "]";
-	}	
+				+ updateDate + ", gnb=" + gnb + ", lnb=" + lnb + ", userinf="
+				+ userinf + "]";
+	}
+	
 }

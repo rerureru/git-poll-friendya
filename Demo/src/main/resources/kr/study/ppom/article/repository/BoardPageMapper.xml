@@ -17,9 +17,10 @@
 		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE,
 		(select d.cdval from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbid",
 		(select d.cdname from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbname",
-		c.CDVAL "lnbid", c.CDNAME "lnbname"
-		from board b, cd c 
-		where c.CDKINDID=2 and b.CATETORYID=c.CDVAL 
+		c.CDVAL "lnbid", c.CDNAME "lnbname",
+		u.nickName, u.email
+		from board b, cd c, userinf u 
+		where c.CDKINDID=2 and b.CATETORYID=c.CDVAL and b.CREATOR=u.USERID 
  	</select>	
 	
 	<select id="getArticleListInLNB" resultMap="boardDtoResultMap">
@@ -27,9 +28,10 @@
 		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE, 
 		(select d.cdval from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbid",
 		(select d.cdname from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbname",
-		c.CDVAL "lnbid", c.CDNAME "lnbname" 
-		from board b, cd c 
-		where c.CDKINDID=2 and b.CATETORYID=c.CDVAL and b.CATETORYID=#{lnb}
+		c.CDVAL "lnbid", c.CDNAME "lnbname",
+		u.nickName, u.email 
+		from board b, cd c, userinf u 
+		where c.CDKINDID=2 and b.CATETORYID=c.CDVAL and b.CATETORYID=#{lnb} and b.CREATOR=u.USERID
 	</select>
 	
 	<select id="getArticleListInGNB" resultMap="boardDtoResultMap">
@@ -37,11 +39,13 @@
 		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE, 
 		(select d.cdval from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbid",
 		(select d.cdname from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbname",
-		c.CDVAL "lnbid", c.CDNAME "lnbname" 
-		from board b, cd c 
+		c.CDVAL "lnbid", c.CDNAME "lnbname",
+		u.nickName, u.email 
+		from board b, cd c, userinf u
 		where c.CDKINDID=2 
 				and b.CATETORYID=c.CDVAL 
 				and CATETORYID in (select CDVAL from cd where CDVALOPT1=#{gnb})
+				and b.CREATOR=u.USERID
 	</select>
 	
 	<resultMap id="boardDtoResultMap" type="BoardDto">
@@ -54,14 +58,19 @@
  		<result column="CREATEDATE" jdbcType="TIMESTAMP" property="createDate" />
  		<result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updateDate" />
  		<association property="gnb" column="CATETORYID" javaType="CDDto">
- 			<id column="gnbid" jdbcType="INTEGER" property="cDVal" />
+ 			<id column="gnbid" jdbcType="VARCHAR" property="cDVal" />
  			<result column="gnbid" jdbcType="VARCHAR" property="cDVal" />
  			<result column="gnbname" jdbcType="VARCHAR" property="cDName" />
  		</association>
  		<association property="lnb" column="CATETORYID" javaType="CDDto">
- 			<id column="lnbid" jdbcType="INTEGER" property="cDVal" />
+ 			<id column="lnbid" jdbcType="VARCHAR" property="cDVal" />
  			<result column="lnbid" jdbcType="VARCHAR" property="cDVal" />
  			<result column="lnbname" jdbcType="VARCHAR" property="cDName" />
+ 		</association>
+ 		<association property="userinf" column="USERID" javaType="UserDto">
+ 			<id column="nickname" jdbcType="VARCHAR" property="nickName" />
+ 			<result column="nickname" jdbcType="VARCHAR" property="nickName" />
+ 			<result column="email" jdbcType="VARCHAR" property="email" />
  		</association>
  	</resultMap>
 </mapper>

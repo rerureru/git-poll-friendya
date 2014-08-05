@@ -54,6 +54,8 @@ public class BoardPageServiceImpl implements BoardPageService {
 			boardList = boardPageDao.lookupArticleListInLNB(lnb);
 			
 		}
+		
+		logger.info( boardList.toString() );
 		return boardList;
 	}	
 	

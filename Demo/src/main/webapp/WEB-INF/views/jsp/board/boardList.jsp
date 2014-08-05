@@ -147,7 +147,7 @@
 						<td><c:url var="articleDetailURL"
 								value="/articleDetail.action?boardId=${article.boardID}" /> <a
 							href="${articleDetailURL}"> ${article.subject}</a></td>
-						<td>${article.creator}</td>
+						<td>${article.userinf.nickName}</td>
 						<td>${article.createDate}</td>
 						<td>${article.hitCNT}</td>
 						<td>${article.recommendCNT}</td>

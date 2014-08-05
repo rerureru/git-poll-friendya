@@ -17,44 +17,26 @@ public class  BoardPageDaoImpl implements BoardPageDao {
 	
 	@Override
 	public List<CDDto> lookupGlobalNavigationBar(){
-		//return BoardPageDaoManager.getGNB();
 		return sqlSession.getMapper(BoardPageMapper.class).getGNBList();
 	}
 
 	@Override
-	public List<BoardDto> lookupSelectedBoardContents(String categoryType,
-			String clickedCategory) {
-		return null;
-	}
-
-	@Override
 	public List<CDDto> lookupLocalNavigationBar(String gnb) {
-//		List<CDDto> cdDtoList = null;	
-//		cdDtoList= BoardPageDaoManager.getLNBByGNBId(gnb);
-		
 		return sqlSession.getMapper(BoardPageMapper.class).getLNBListByGNBId(gnb);
 	}
 
 	@Override
 	public List<BoardDto> lookupArticleListAll() {
-//		List<BoardDto> boardDtoList = null;
-//		boardDtoList = BoardPageDaoManager.getArticleListAll();
 		return sqlSession.getMapper(BoardPageMapper.class).getArticleListAll();
 	}
 
 	@Override
 	public List<BoardDto> lookupArticleListInGNB(String gnb) {
-//		List<BoardDto> boardDtoList = null;
-//		boardDtoList = BoardPageDaoManager.getArticleListInGNB(gnb);
-
 		return sqlSession.getMapper(BoardPageMapper.class).getArticleListInGNB(gnb);
 	}
 
 	@Override
 	public List<BoardDto> lookupArticleListInLNB(String lnb) {
-//		List<BoardDto> boardDtoList = null;
-//		boardDtoList = BoardPageDaoManager.getArticleListInLNB(lnb);
-
 		return sqlSession.getMapper(BoardPageMapper.class).getArticleListInLNB(lnb);
 	}
 
