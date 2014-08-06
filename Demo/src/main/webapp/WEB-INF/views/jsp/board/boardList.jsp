@@ -61,10 +61,10 @@
 		checkSelectedMenu("${selectedMenu.selectedGNBMenuID}",
 				"${selectedMenu.selectedLNBMenuID}");
 
-		<c:url var="loginUrl" value="/newArticle.action" />
+		<c:url var="newArticleUrl" value="/newArticle.action" />
 		$("#newArticle").button().click(
 			function(){ 
-				window.location = "${loginUrl}";
+				window.location = "${newArticleUrl}";
 				console.log('newArticle Button clicked');
 			}
 		);

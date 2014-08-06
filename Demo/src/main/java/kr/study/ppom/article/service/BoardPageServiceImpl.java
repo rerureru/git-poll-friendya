@@ -33,6 +33,12 @@ public class BoardPageServiceImpl implements BoardPageService {
 	}
 	
 	@Override
+	public List<CDDto> getPageGlobalNavigationBarModel() {		
+		
+		return boardPageDao.lookupGlobalNavigationBar();
+	}
+	
+	@Override
 	public PageNavigationBarModel getPageNavigationBarModel(String gnb,
 			String lnb ) {		
 		PageNavigationBarModel pageNavigationBarModel = new PageNavigationBarModel();
@@ -97,5 +103,12 @@ public class BoardPageServiceImpl implements BoardPageService {
 		} 
 		
 		return selectedMenu;
+	}
+
+	@Override
+	public List<CDDto> getPagelocalNavigationBarModel(String gnbId ) {
+		List<CDDto> lnbList = boardPageDao.lookupLocalNavigationBar( gnbId );
+		
+		return lnbList;
 	}
 }

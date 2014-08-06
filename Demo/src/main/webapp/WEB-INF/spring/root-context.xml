@@ -71,7 +71,9 @@
 		<security:intercept-url pattern="/boardList.action" access="permitAll"/>
 		<security:intercept-url pattern="/articleDetail.action" access="permitAll"/>
 		<security:intercept-url pattern="/newArticle.action" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/submitArticle.action" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/friend/**" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/board/menu/**" access="permitAll"/>
 		<security:intercept-url pattern="/*" access="hasRole('ROLE_USER')"/>
 		
 		<security:form-login  

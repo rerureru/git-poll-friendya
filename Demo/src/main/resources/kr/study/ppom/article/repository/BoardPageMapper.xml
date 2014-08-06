@@ -5,11 +5,11 @@
 
 <mapper namespace="kr.study.ppom.article.repository.BoardPageMapper">
 	<select id="getGNBList" resultType="CDDto">
-		select * from cd where CDKINDID="1" 
+		select CDKINDID,CDVAL,CDNAME from cd where CDKINDID="1" 
 	</select>
 	
 	<select id="getLNBListByGNBId"  parameterType="String" resultType="CDDto">
-		select * from cd where CDKINDID=2 and CDVALOPT1=#{clickedCategory}
+		select CDKINDID,CDVAL,CDNAME from cd where CDKINDID=2 and CDVALOPT1=#{clickedCategory}
 	</select>
 	
 	<select id="getArticleListAll" resultMap="boardDtoResultMap">
