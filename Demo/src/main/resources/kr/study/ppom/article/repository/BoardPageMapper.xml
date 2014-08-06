@@ -48,6 +48,12 @@
 				and b.CREATOR=u.USERID
 	</select>
 	
+	
+	<insert id="insertArticle" parameterType="kr.study.ppom.article.dto.ArticleDto">
+		insert into BOARD(BOARDID,CATETORYID,SUBJECT,CONTENT,HITCNT,RECOMMENDCNT,CREATOR,CREATEDATE,UPDATEDATE)
+		values ( DEFAULT,#{lnb},#{title},#{content},0,0,#{creator},now(),now())
+	</insert>  
+	
 	<resultMap id="boardDtoResultMap" type="BoardDto">
  		<id column="BOARDID" jdbcType="INTEGER" property="boardID" />
  		<result column="CATETORYID" jdbcType="VARCHAR" property="catetoryID" />

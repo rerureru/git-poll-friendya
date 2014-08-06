@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import kr.study.ppom.article.dto.ArticleDto;
 import kr.study.ppom.article.dto.CDDto;
 import kr.study.ppom.article.model.ArticleListModel;
 import kr.study.ppom.article.model.PageNavigationBarModel;
@@ -72,11 +73,12 @@ public class BoardPageController {
 	
 	@RequestMapping(value="/submitArticle.action", method=RequestMethod.POST)
 	public ModelAndView submitArticle( 
-			Article article, 
+			ArticleDto article, 
 			HttpServletRequest request, 
 			Principal principal ){ 
 		logger.info("[controller] : " + article + ", username : " + principal.getName() );
-		//boardPageService.writeArticle( article, request.getSession().getAttribute("username") );
+		article.setCreator(principal.getName());
+		boardPageService.insertArticle( article );
 		
 		RedirectView articleCreateCompleteRV = new RedirectView(request.getContextPath() +"/boardList.action");
 		articleCreateCompleteRV.setExposeModelAttributes(false);

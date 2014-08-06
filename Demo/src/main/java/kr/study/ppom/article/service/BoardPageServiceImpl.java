@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.study.ppom.article.dao.BoardPageDao;
+import kr.study.ppom.article.dto.ArticleDto;
 import kr.study.ppom.article.dto.BoardDto;
 import kr.study.ppom.article.dto.CDDto;
 import kr.study.ppom.article.model.ArticleListModel;
@@ -27,7 +28,6 @@ public class BoardPageServiceImpl implements BoardPageService {
 		ArticleListModel articleListModel = new ArticleListModel();
 		articleListModel.setArticleList( getArticleList( clickedGNB, clickedLNB) );
 		articleListModel.setArticleTotalCount( boardPageDao.getArticleCount(clickedGNB, clickedLNB ) );
-		
 		
 		return articleListModel;
 	}
@@ -110,5 +110,11 @@ public class BoardPageServiceImpl implements BoardPageService {
 		List<CDDto> lnbList = boardPageDao.lookupLocalNavigationBar( gnbId );
 		
 		return lnbList;
+	}
+
+	@Override
+	public int insertArticle(ArticleDto article) {
+		
+		return boardPageDao.insertArticle(article);
 	}
 }

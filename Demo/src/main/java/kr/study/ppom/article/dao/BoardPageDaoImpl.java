@@ -2,6 +2,7 @@ package kr.study.ppom.article.dao;
 
 import java.util.List;
 
+import kr.study.ppom.article.dto.ArticleDto;
 import kr.study.ppom.article.dto.BoardDto;
 import kr.study.ppom.article.dto.CDDto;
 import kr.study.ppom.article.repository.BoardPageMapper;
@@ -44,5 +45,10 @@ public class  BoardPageDaoImpl implements BoardPageDao {
 	public int getArticleCount(String clickedGNB, String clickedLNB) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int insertArticle(ArticleDto article) {
+		return sqlSession.getMapper(BoardPageMapper.class).insertArticle(article);
 	}	
 }
