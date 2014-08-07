@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.study.ppom.article.dao.BoardPageDao;
-import kr.study.ppom.article.dto.ArticleDto;
 import kr.study.ppom.article.dto.BoardDto;
 import kr.study.ppom.article.dto.CDDto;
 import kr.study.ppom.article.model.ArticleListModel;
@@ -113,8 +112,13 @@ public class BoardPageServiceImpl implements BoardPageService {
 	}
 
 	@Override
-	public int insertArticle(ArticleDto article) {
+	public int insertArticle(BoardDto article) {
 		
 		return boardPageDao.insertArticle(article);
+	}
+
+	@Override
+	public BoardDto getArticleDetail(String articleId) {
+		return boardPageDao.selectArticle(articleId);
 	}
 }

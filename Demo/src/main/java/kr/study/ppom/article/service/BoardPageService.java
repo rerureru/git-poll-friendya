@@ -2,7 +2,7 @@ package kr.study.ppom.article.service;
 
 import java.util.List;
 
-import kr.study.ppom.article.dto.ArticleDto;
+import kr.study.ppom.article.dto.BoardDto;
 import kr.study.ppom.article.dto.CDDto;
 import kr.study.ppom.article.model.ArticleListModel;
 import kr.study.ppom.article.model.PageNavigationBarModel;
@@ -17,6 +17,8 @@ public interface BoardPageService {
 
 	List<CDDto> getPagelocalNavigationBarModel(String gnbId);
 
-	int insertArticle(ArticleDto article);
+	int insertArticle(BoardDto article);
+
+	BoardDto getArticleDetail(String articleId);
 
 }

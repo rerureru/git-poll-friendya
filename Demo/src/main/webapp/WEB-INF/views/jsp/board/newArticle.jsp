@@ -118,9 +118,9 @@
 	</div>
 	<div id="article">
 		<form action="<c:url value='/submitArticle.action' />" method="post">
-			<input type="hidden" id="selectedLnb" name="lnb" />
+			<input type="hidden" id="selectedLnb" name="catetoryID" />
 			<label>제목</label>
-			<input id="title" name="title" type="text" />
+			<input id="title" name="subject" type="text" />
 		
 			<textarea id="content" name="content" style="width:300px; height:150px;"></textarea>
 			<br />

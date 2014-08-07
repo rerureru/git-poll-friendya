@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import kr.study.ppom.article.dto.ArticleDto;
+import kr.study.ppom.article.dto.BoardDto;
 import kr.study.ppom.article.dto.CDDto;
 import kr.study.ppom.article.model.ArticleListModel;
 import kr.study.ppom.article.model.PageNavigationBarModel;
@@ -57,7 +57,13 @@ public class BoardPageController {
 			@RequestParam(value="boardId") String articleId){ 
 		logger.info("showArticleDetail Called : " + articleId);
 		ModelAndView articleMAV = new ModelAndView();
-		articleMAV.setViewName("home");
+		
+		BoardDto boardDto = boardPageService.getArticleDetail( articleId );
+		articleMAV.addObject("article", boardDto);
+		
+		logger.info("[controller] : " + boardDto);
+		
+		articleMAV.setViewName("jsp/board/articleDetail");
 		return articleMAV;
 	}
 	
@@ -73,7 +79,7 @@ public class BoardPageController {
 	
 	@RequestMapping(value="/submitArticle.action", method=RequestMethod.POST)
 	public ModelAndView submitArticle( 
-			ArticleDto article, 
+			BoardDto article, 
 			HttpServletRequest request, 
 			Principal principal ){ 
 		logger.info("[controller] : " + article + ", username : " + principal.getName() );

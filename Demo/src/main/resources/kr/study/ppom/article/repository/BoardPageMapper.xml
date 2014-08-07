@@ -49,15 +49,28 @@
 	</select>
 	
 	
-	<insert id="insertArticle" parameterType="kr.study.ppom.article.dto.ArticleDto">
+	<insert id="insertArticle" parameterType="kr.study.ppom.article.dto.BoardDto">
 		insert into BOARD(BOARDID,CATETORYID,SUBJECT,CONTENT,HITCNT,RECOMMENDCNT,CREATOR,CREATEDATE,UPDATEDATE)
-		values ( DEFAULT,#{lnb},#{title},#{content},0,0,#{creator},now(),now())
+		values ( DEFAULT,#{catetoryID},#{subject},#{content},0,0,#{creator},now(),now())
 	</insert>  
+	
+	
+	<select id="selectArticle" resultMap="boardDtoResultMap">
+		select b.BOARDID, b.CATETORYID, b.SUBJECT, b.CONTENT, b.HITCNT, 
+		b.RECOMMENDCNT, b.CREATOR,b.CREATEDATE, b.UPDATEDATE,
+		(select d.cdval from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbid",
+		(select d.cdname from cd d where d.cdkindid=1 and d.cdval=c.CDVALOPT1) "gnbname",
+		c.CDVAL "lnbid", c.CDNAME "lnbname",
+		u.nickName, u.email
+		from board b, cd c, userinf u 
+		where b.BOARDID=#{articleId} and c.CDKINDID=2 and b.CATETORYID=c.CDVAL and b.CREATOR=u.USERID 
+ 	</select>
 	
 	<resultMap id="boardDtoResultMap" type="BoardDto">
  		<id column="BOARDID" jdbcType="INTEGER" property="boardID" />
  		<result column="CATETORYID" jdbcType="VARCHAR" property="catetoryID" />
  		<result column="SUBJECT" jdbcType="VARCHAR" property="subject" />
+ 		<result column="CONTENT" jdbcType="VARCHAR" property="content" />
  		<result column="HITCNT" jdbcType="VARCHAR" property="hitCNT" />
  		<result column="RECOMMENDCNT" jdbcType="INTEGER" property="recommendCNT" />
  		<result column="CREATOR" jdbcType="INTEGER" property="creator" />
