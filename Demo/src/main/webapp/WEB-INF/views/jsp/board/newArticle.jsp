@@ -48,7 +48,11 @@
 		); 		
 	}
 	
-	function getLnbList( gnbId ) {
+	function setHiddenSelectedLNB( lnbId) {
+		$('#hiddenSelectedLnb').val( lnbId );
+	}
+	
+	function makeLnbList( gnbId ) {
 		deleteLNBSelectOption();
 		<c:url var="lnbRestURI" value="/board/menu/gnb/" />
 		var lnbResourceURI = "${lnbRestURI}" + gnbId + "/lnb";
@@ -58,6 +62,9 @@
 				console.log("iamcalled");
 				$.each( lnbList, 
 					function( lnbIdx, lnbInfo) {
+						if( lnbIdx == 0 ) {
+							setHiddenSelectedLNB(lnbInfo.cDVal);
+						} 
 						addLNBSelectOption( lnbInfo.cDVal, lnbInfo.cDName );						
 					}
 				);
@@ -72,6 +79,8 @@
 			addGNBSelectOption("${gnbMenu.cDVal}", "${gnbMenu.cDName}");
 		</c:forEach>
 
+		makeLnbList( "${boardGNB[0].cDVal}" );
+				
 		<c:url var="loginUrl" value="/boardList.action" />
 		$("#goToList").button().click(
 			function(){ 
@@ -82,14 +91,14 @@
 		
 		$("#gnbSelector").change(
 			function(){
-				getLnbList( $("#gnbSelector option:selected").val() )
+				makeLnbList( $("#gnbSelector option:selected").val() )
 			}
 		);	
 		
 		$("#lnbSelector").change( 
 			function() {
 				var selectedLnb = $(this).val();
-				$('#selectedLnb').val(selectedLnb);
+				setHiddenSelectedLNB(selectedLnb);
 			}	
 		);
 		
@@ -118,7 +127,7 @@
 	</div>
 	<div id="article">
 		<form action="<c:url value='/submitArticle.action' />" method="post">
-			<input type="hidden" id="selectedLnb" name="catetoryID" />
+			<input type="hidden" id="hiddenSelectedLnb" name="catetoryID" />
 			<label>제목</label>
 			<input id="title" name="subject" type="text" />
 		
